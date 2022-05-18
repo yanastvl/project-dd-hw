@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect, HashRouter } from "react-router-dom";
 import Login from "../../pages/login/login.jsx";
 import UserList from "../../pages/user-list/user-list.jsx";
 import TaskList from "../../pages/task-list/task-list.jsx";
@@ -29,7 +29,7 @@ const App = () => {
   const user = localStorage.getItem('user');
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <PrivateRoute exact path={AppRoute.USER_LIST} component={UserList} />
         <PrivateRoute exact path={AppRoute.TASK_LIST} component={TaskList} />
@@ -45,7 +45,7 @@ const App = () => {
           <Redirect to={{ pathname: AppRoute.TASK_LIST }} />
         }
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
 )}
 
 export default App;

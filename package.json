@@ -1,6 +1,7 @@
 {
   "name": "project-dd-hw",
   "version": "1.0.0",
+  "homepage": "https://github.com/yanastvl/project-dd-hw",
   "description": "react app from homework",
   "main": "index.js",
   "dependencies": {
@@ -27,6 +28,7 @@
     "css-mqpacker": "^7.0.0",
     "cssnano": "^5.1.7",
     "file-loader": "^6.2.0",
+    "gh-pages": "^4.0.0",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.0",
