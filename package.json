@@ -1,0 +1,56 @@
+{
+  "name": "project-dd-hw",
+  "version": "1.0.0",
+  "description": "react app from homework",
+  "main": "index.js",
+  "dependencies": {
+    "mobx": "^6.5.0",
+    "mobx-react-lite": "^3.4.0",
+    "moment": "^2.29.3",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/plugin-transform-runtime": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "@pmmmwh/react-refresh-webpack-plugin": "github:pmmmwh/react-refresh-webpack-plugin",
+    "autoprefixer": "^10.4.5",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^5.1.7",
+    "file-loader": "^6.2.0",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "node-sass": "^7.0.1",
+    "normalize.css": "^8.0.1",
+    "postcss-loader": "^6.2.1",
+    "react-refresh": "^0.13.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  },
+  "scripts": {
+    "start": "cross-env SERVE=true webpack serve",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 3 version"
+  ],
+  "author": "Yana Stoyanidu",
+  "license": "ISC"
+}

@@ -1,0 +1,161 @@
+.user__page {
+    padding: 0px 80px;
+
+    &-inner {
+        max-width: 1280px;
+        max-height: 642px;
+        padding: 20px;
+
+        background-color: $white;
+
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 3px $inner-shadow;
+    }
+
+    &-window {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+
+        background: $white;
+    }
+
+    &-about {
+        @include text;
+        color: $label-text;
+    }
+
+    &-content {
+        @include text;
+        color: $text-color;
+    }
+
+    &-info {
+        padding-top: 20px;
+    }
+
+    &-avatar {
+        width: 186px;
+        height: 186px;
+        border-radius: 107px;
+}
+}
+
+.user-col {
+    min-width: 24.1%;
+    margin-right: 20px;
+    max-height: 602px;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.user-col::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.task-col {
+    min-width: 72.5%;
+    margin-left: 20px;
+    max-height: 602px;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.task-col::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.line {
+    border-left: 1px solid #B5B5B5;
+    height: 602px;
+}
+
+.task__page {
+    max-height: 53.4px;
+
+    &:nth-child(2n) {
+        background-color: #F2F2F2;
+    }
+
+    &-inner {
+        margin-bottom: 20px;
+
+        min-height: 534px;
+
+        background-color: #fff;
+        box-shadow: 0px 0px 2px 1px #B5B5B5;
+        border-radius: 5px;
+    }
+
+    &-subtitle {
+        padding-bottom: 5px;
+
+        @include text;
+        color: $label-text;
+    }
+
+    &-list {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        max-height: 53.4px;
+        align-items:center;
+    }
+
+    &-type {
+        margin: 22px 0px 22px 30px;
+    }
+
+    &-text {
+        @include text;
+        color: $black;
+
+        &:hover {
+            color: $primary;
+          }
+        
+          &-active {
+          color:$text-color;
+            border-bottom: 2px solid $primary;
+          }
+    }
+
+    &-button {
+        margin: 22px 0px 22px 0;
+        padding: 2px 10px;
+    }
+
+    &-rank {
+        padding: 26px 0 26px 17px;
+    }
+
+    &-user{
+        margin: 22px 44px 22px 30px;
+    }
+}
+
+.type__user {
+    min-width: 7.6%;
+    padding-right: 14px
+}
+
+.task__user {
+    min-width: 58.6%;
+    margin: 22.5px 14px;
+    cursor: pointer;
+}
+
+.status__user {
+    min-width: 13.3%;
+}
+
+.rank__user {
+    min-width: 12.5%;
+    margin-left: 14px;
+}
+

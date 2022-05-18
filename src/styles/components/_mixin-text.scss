@@ -1,0 +1,30 @@
+@mixin caption {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+@mixin text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+@mixin text-button{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@mixin modal-caption{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+@mixin dropdown-text{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    color:$text-color;
+}

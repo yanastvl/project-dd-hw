@@ -1,0 +1,101 @@
+.header {
+  background-color: $white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  height: 60px;
+
+  &-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    padding: 20px;
+  }
+
+  &-nav {
+    display: flex;
+  }
+
+  &-caption {
+    @include caption;
+    padding: 30px 0px 20px 80px;
+  }
+
+  &-link {
+    padding: 0;
+    margin: 0;
+    width: 160px;
+    height: 60px;
+  }
+}
+
+.nav__link {
+  padding: 13.5px 0px 11.5px;
+  margin: 0px 5px 0px 5px;
+  align-self: center;
+
+  font-family: $open-sans;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: $text-color;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &-active {
+    color: $text-color;
+    border-bottom: 2px solid $primary;
+  }
+}
+
+.user {
+  &-profile {
+    display: flex;
+    align-items: center;
+  }
+
+  &-name {
+    @include text;
+    padding-right: 10px;
+  }
+
+  &-photo {
+    width: 42px;
+    height: 42px;
+    margin-right: 20px;
+
+    border-radius: 21px;
+  }
+
+  &-avatar {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+
+    border-radius: 21px;
+    padding: 2px;
+
+    background: linear-gradient(91deg, #FF6161 0%, #7B61FF 100%);
+  }
+
+}
+
+.caption-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.caption__button-inner>button {
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+}
+
+.caption__button-inner {
+  padding: 30px 80px 20px 0px;
+}

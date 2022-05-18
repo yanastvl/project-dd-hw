@@ -1,0 +1,61 @@
+.dropdown__toggle-edit {
+    max-height: 24px;
+    width: 100%;
+    @include dropdown-text;
+    padding: 5px 0px 4px 10px;
+}
+
+.edit__textarea {
+    padding: 5px 10px;
+
+    width: 100%;
+    height: 510px;
+
+    resize: none;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.edit__textarea::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    
+    &:active {
+        outline: none
+    }
+
+    &:focus {
+        outline: none
+    }
+
+}
+
+.capet-down{
+    background: url("../img/v.svg") no-repeat right;
+    background-position: calc(100% - 9px);
+}
+
+.capet-up{
+    background: url("../img/up.svg") no-repeat right;
+    background-position: calc(100% - 9px);
+}
+
+
+.task {
+    &-select {
+        width: 100%;
+        padding: 5px 10px;
+        color: #333;
+        @include dropdown-text;
+    }
+}

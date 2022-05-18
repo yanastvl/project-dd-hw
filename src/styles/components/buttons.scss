@@ -1,0 +1,436 @@
+/*Buttons*/
+
+.success-button {
+  padding: 2.5px 20px;
+  @include text;
+  background-color: $success;
+  border: 1px solid $success;
+  border-radius: 5px;
+  color: $white;
+
+  &:hover {
+    background-color: #80f0a6;
+    border: 1px solid #80f0a6;
+    border-radius: 5px;
+    color: $white;
+  }
+
+  &:active {
+    background-color: #4BD379;
+    border: 1px solid #4BD379;
+    border-radius: 5px;
+    color: $white;
+  }
+}
+
+.default-button {
+  @include text;
+  background-color: $disabled-text;
+  border: 1px solid $text-color;
+  border-radius: 5px;
+  color: $black;
+  padding: 2.5px 20px;
+
+  &:hover {
+    background-color: #e1e1e1;
+    border: 1px solid $text-color;
+    border-radius: 5px;
+    color: $black;
+  }
+
+  &:active {
+    background-color: #cfcfcf;
+    border: 1px solid $text-color;
+    border-radius: 5px;
+    color: $black;
+  }
+}
+
+.primary-button {
+  @include text;
+  background-color: $primary;
+  border: 1px solid $primary;
+  border-radius: 5px;
+  color: $white;
+  padding: 2.5px 20px;
+
+  &:hover {
+    background-color: #8a73ff;
+    border: 1px solid #8a73ff;
+    border-radius: 5px;
+    color: $white;
+  }
+
+  &:active {
+    background-color: #715be3;
+    border: 1px solid #715be3;
+    border-radius: 5px;
+    color: $white;
+  }
+}
+
+.error-button {
+  @include text;
+  background-color: $error;
+  border: 1px solid $error;
+  border-radius: 5px;
+  color: $white;
+  padding: 2.5px 20px;
+
+  &:hover {
+    background-color: #ff8080;
+    border: 1px solid #ff8080;
+    border-radius: 5px;
+    color: $white;
+  }
+
+  &:active {
+    background-color: #d65d5d;
+    border: 1px solid #d65d5d;
+    border-radius: 5px;
+    color: $white;
+  }
+}
+
+.disabled-button {
+  @include text;
+  background-color: $inner-shadow;
+  border: 1px solid $inner-shadow;
+  border-radius: 5px;
+  color: $label-text;
+  padding: 2.5px 20px;
+}
+
+/*Status*/
+
+.status-complete {
+  background-color: #4BD379;
+  border: 1px solid #157536;
+  border-radius: 5px;
+  color: #157536;
+  @include text-button;
+}
+
+.status-inProgress {
+  background-color: #FFC700;
+  border: 1px solid #846F00;
+  border-radius: 5px;
+  color: #846F00;
+  @include text-button;
+}
+
+.status-testing {
+  background-color: #FFC700;
+  border: 1px solid #846F00;
+  border-radius: 5px;
+  color: #846F00;
+  @include text-button;
+}
+
+.status-opened {
+  background-color: $label-text;
+  border: 1px solid $text-color;
+  border-radius: 5px;
+  color: $text-color;
+  @include text-button;
+}
+
+.status-danger {
+  background-color: #EB4F4F;
+  border: 1px solid #6D1313;
+  border-radius: 5px;
+  color: #6D1313;
+  @include text-button;
+}
+
+/*Pagination*/
+
+.pagination__back,
+.pagination__forward {
+  padding: 2.5px 10px;
+  margin-right: 5px;
+  max-height: 24px;
+  min-width: 67px;
+  @include text;
+
+  border-radius: 5px;
+
+  &--disabled {
+    background-color: $inner-shadow;
+    border: 1px solid $inner-shadow;
+    border-radius: 5px;
+    color: $label-text;
+    cursor: not-allowed;
+  }
+
+  &--default {
+    background-color: $disabled-text;
+    border: 1px solid $text-color;
+    border-radius: 5px;
+    color: $black;
+
+    &:hover {
+      background-color: #e1e1e1;
+      border: 1px solid $text-color;
+      border-radius: 5px;
+      color: $black;
+    }
+
+    &:active {
+      background-color: #cfcfcf;
+      border: 1px solid $text-color;
+      border-radius: 5px;
+      color: $black;
+    }
+  }
+}
+
+.pagination__number {
+  padding: 2.5px 7.5px;
+  margin-right: 5px;
+  max-width: 24px;
+  max-height: 24px;
+  @include text;
+
+  border-radius: 5px;
+
+  &--default {
+    background-color: $disabled-text;
+    border: 1px solid $text-color;
+    border-radius: 5px;
+    color: $black;
+  }
+
+  &--stay {
+    background-color: $primary;
+    border: 1px solid $primary;
+    border-radius: 5px;
+    color: $white;
+  }
+
+  &:hover {
+    background-color: #8a73ff;
+    border: 1px solid #8a73ff;
+    border-radius: 5px;
+    color: $white;
+  }
+
+  &:active {
+    background-color: #715be3;
+    border: 1px solid #715be3;
+    border-radius: 5px;
+    color: $white;
+  }
+
+}
+
+/*Type*/
+
+.square {
+  width: 24px;
+  height: 24px;
+
+  position: relative;
+  z-index: 1;
+
+  border-radius: 5px;
+
+  &-task {
+    background: #00D1FF;
+  }
+
+  &-bug {
+    background: #EB4F4F;
+  }
+
+}
+
+.circle {
+  margin: 6px;
+
+  width: 12px;
+  height: 12px;
+
+  position: absolute;
+  z-index: 2;
+
+  background: white;
+  border-radius: 50px;
+}
+
+/*Rank*/
+
+.button__rank {
+  &-high {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #d14343;
+    background: url("../img/rank-red.svg");
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: center;
+  }
+
+  &-medium {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #e9b500;
+    background: url("../img/rank-yellow.svg");
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: center;
+  }
+
+  &-low {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3ca961;
+    background: url("../img/rank-green.svg");
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: center;
+  }
+
+}
+
+/*Burger*/
+
+.burger-button {
+  margin-right: 30px;
+  fill: $primary;
+  stroke: $primary;
+
+  &:hover {
+    background: $primary;
+    fill: $white;
+    stroke: $white;
+    border-radius: 5px;
+  }
+
+  &:active {
+    background: $primary;
+    fill: $white;
+    stroke: $white;
+    border-radius: 5px;
+  }
+}
+
+/*Checkbox*/
+
+.checkbox-default {
+  background-color: $white;
+  border: 1px solid $text-color;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $white;
+    border: 1px solid $primary;
+    border-radius: 5px;
+  }
+
+  &:active {
+    background-color: $primary;
+    border: 1px solid $primary;
+    border-radius: 5px;
+    background: no-repeat center url(../img/x.svg);
+    background-size: 10px;
+  }
+}
+
+.checkbox-disabled-empty {
+  background-color: $inner-shadow;
+  border: 1px solid $inner-shadow;
+  border-radius: 5px;
+  background: no-repeat center url(../img/x.svg);
+  background-size: 10px;
+
+}
+
+.checkbox-disabled-not-empty {
+  background-color: $inner-shadow;
+  border: 1px solid $inner-shadow;
+  border-radius: 5px;
+}
+
+/*Input*/
+
+.input__empty {
+  background-color: $white;
+  box-shadow: inset 0px 0px 2px 1px $inner-shadow;
+  border-radius: 3px;
+}
+
+.input__default {
+  background-color: $white;
+  border: 1px solid $primary;
+  box-shadow: inset 0px 0px 2px 1px $inner-shadow;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: $white;
+    border: 1px solid $primary;
+    box-shadow: inset 0px 0px 2px 1px $inner-shadow;
+    border-radius: 3px;
+
+  }
+
+  &:focus {
+    background-color: $white;
+    border: 1px solid $primary;
+    box-shadow: 0px 0px 2px 2px rgba(123, 97, 255, 0.5);
+    border-radius: 3px;
+  }
+}
+
+.input__disabled {
+  background: $inner-shadow;
+  box-shadow: inset 0px 0px 2px 1px $inner-shadow;
+  border-radius: 3px;
+}
+
+.input__success {
+  background-color: $white;
+  border: 1px solid $success;
+  box-shadow: inset 0px 0px 2px 1px $inner-shadow;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: $white;
+    border: 1px solid $success;
+    box-shadow: inset 0px 0px 2px 1px $inner-shadow;
+    border-radius: 3px;
+
+  }
+
+  &:focus {
+    background-color: $white;
+    border: 1px solid $success;
+    box-shadow: 0px 0px 2px 2px rgba(97, 255, 151, 0.5);
+    border-radius: 3px;
+  }
+}
+
+.input__error {
+  background-color: $white;
+  border: 1px solid $error;
+  box-shadow: inset 0px 0px 2px 1px $inner-shadow;
+  border-radius: 3px;
+
+  &:hover {
+    background-color: $white;
+    border: 1px solid $error;
+    box-shadow: inset 0px 0px 2px 1px $inner-shadow;
+    border-radius: 3px;
+
+  }
+
+  &:focus {
+    background-color: $white;
+    border: 1px solid $error;
+    box-shadow: 0px 0px 2px 2px rgba(255, 97, 97, 0.5);
+    border-radius: 3px;
+  }
+}

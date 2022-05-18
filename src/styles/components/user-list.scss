@@ -1,0 +1,78 @@
+.user__list {
+  padding: 0px 80px;
+
+  &-inner {
+    max-width: 1280px;
+    padding: 20px;
+
+    background-color: $white;
+
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 3px $inner-shadow;
+  }
+
+  &-window {
+    margin-bottom: 20px;
+
+    max-width: 1280px;
+    max-height: 557px;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 1px $inner-shadow;
+    background: $white;
+
+    :nth-child(even) {
+      background: #F2F2F2;
+    }
+
+  }
+
+  &-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-height: 55.8px;
+    padding-left: 30px;
+    cursor: pointer;
+    
+  }
+
+  &-card {
+    color:$text-color;
+    @include text;
+    padding: 24.5px 0px;
+
+    
+    &:hover {
+      color: $primary;
+    }
+  
+    &-active {
+    color:$text-color;
+      border-bottom: 2px solid $primary;
+    }
+
+  }
+
+  &-pagination {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-more {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+.pagination-text {
+  @include text-button;
+  color: $inner-shadow;
+
+  align-self: center;
+}
+
