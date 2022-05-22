@@ -42,20 +42,22 @@ const UserInfo = observer(({user,totalCount,filteredTasks}) => {
 
                         { filteredTasks.map(task => 
                             <div className="task__page">
-                                <div className="task__page-list">
-                                <div className="type__inner">
-                                    <div className={`task__page-user square square-${task.type}`}>
-                                        <div className="circle"></div>
+                                <Link to={`/task/${task.id}`} >
+                                    <div className="task__page-list">
+                                    <div className="type__inner">
+                                        <div className={`task__page-user square square-${task.type}`}>
+                                            <div className="circle"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                    <div className="task__user">
-                                        <Link to={`/task/${task.id}`} className="task__page-text">{task.title}</Link>
+                                        <div className="task__user">
+                                        <div className="task__page-text">{task.title}</div>
+                                        </div>
+                                        <div className="status__user">
+                                            <button className={`task__page-button status-${task.status}`}>{StatusMap[task.status]}</button></div>
+                                        <div className="rank__user">
+                                            <button className={`task__page-rank button__rank-${task.rank}`}>{RankMap[task.rank]}</button></div>
                                     </div>
-                                    <div className="status__user">
-                                        <button className={`task__page-button status-${task.status}`}>{StatusMap[task.status]}</button></div>
-                                    <div className="rank__user">
-                                        <button className={`task__page-rank button__rank-${task.rank}`}>{RankMap[task.rank]}</button></div>
-                                </div>
+                                </Link>
                             </div>
                         )}
  

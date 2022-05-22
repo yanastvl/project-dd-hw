@@ -1,25 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { users } from "../../store/index";
 import { observer } from 'mobx-react-lite';
 
 const UserProfile = () => {
-    const history = useHistory();
     const { pathname } = useLocation();
     const grut = require("../../img/1koxkh10zsu-bigTopImage.jpg");
 
     const user = JSON.parse(localStorage.getItem('user'));
 
-    useEffect(() => {
-        const exit = document.querySelector('.exit');
-        exit.addEventListener('click', function (e) {
-            localStorage.removeItem('user');
-            history.push(AppRoute.LOGIN);
-        });
-    }, [])
+    const logout = () => {
+        localStorage.removeItem('user');
+        location.href = '/';
+    }
 
     return (
             <>
@@ -41,7 +37,7 @@ const UserProfile = () => {
                                 </li>
 
                                 <li className="dropdown-input li-button">
-                                    <a className="exit dropdown-link delete-task">Выйти из системы</a>
+                                    <a className="exit dropdown-link delete-task" onClick={logout}>Выйти из системы</a>
                                 </li>
                             </ul>
                         </button>

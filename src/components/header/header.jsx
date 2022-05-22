@@ -4,29 +4,48 @@ import { AppRoute } from '../../const';
 import UserProfile from '../user-profile/user-profile.jsx';
 import { tasks } from "../../store/index";
 
-
 const Header = () => {
     const Logo = require("../../img/Logo.svg");
     const user = localStorage.getItem('user');
 
     useEffect(() => {
-        const dropdowns = document.querySelectorAll('.dropdown__toggle');       
+        const dropdowns = document.querySelectorAll('.dropdown__outer');
+        const search = document.getElementById('search');
         dropdowns.forEach((dropdown) => {
-            dropdown.addEventListener('click', function () {
-                dropdown.classList.toggle("is-active");
+            dropdown.addEventListener('click', (event) => {
+
+                window.onclick = function(event) {
+                    if (event.target != dropdown) {
+                        dropdowns.forEach((dropdown) => {
+                            dropdown.classList.remove("is-active");
+                            dropdown.children[0].classList.remove("dropdown__toggle");
+                            dropdown.children[0].children[0].classList.remove("input__default");
+                            dropdown.children[0].children[0].classList.remove("capet-up");
+                        })
+                    }
+                }
+
+                const withinBoundaries = event.composedPath().includes(search);
+                if (withinBoundaries) {
+                    event.stopPropagation();
+                    dropdown.classList.toggle("is-active");
+                    dropdown.children[0].classList.toggle("dropdown__toggle");
+                    dropdown.children[0].children[0].classList.toggle("input__default");
+                    dropdown.children[0].children[0].classList.toggle("capet-up");
+                }
             })
         });
       
         tasks.fetch().then(() => {
             const dropdownButtons = document.querySelectorAll('.dropdown__toggle-button');
-            dropdownButtons.forEach((popup) => {
+            dropdownButtons.forEach((dropdown) => {
                 document.addEventListener('click', (event) => {
-                    const withinBoundaries = event.composedPath().includes(popup)
+                    const withinBoundaries = event.composedPath().includes(dropdown);
                     if (withinBoundaries) {
                         event.stopPropagation();
-                        popup.classList.toggle('is-active');
+                        dropdown.classList.toggle('is-active');
                     } else {
-                        popup.classList.remove('is-active');
+                        dropdown.classList.remove('is-active');
                     }
                 })
             })

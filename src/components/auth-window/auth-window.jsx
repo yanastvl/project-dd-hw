@@ -35,7 +35,7 @@ const AuthWindow = observer(() => {
             setErrorMessage("Неправильный логин или пароль");
             raiseError(true);
         });
-      }
+    }
 
     return (
         <section className="authorization">

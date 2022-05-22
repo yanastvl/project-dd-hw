@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { tasks } from "../../store/index";
 import { users } from "../../store/index";
@@ -9,6 +9,14 @@ import Pagination from "../../components/pagination/pagination.jsx";
 
 const Tasks = observer(({filteredTasks, totalCount}) => {
     const { allUsers } = users;
+    const [form, setForm] = useState({
+        query: ""
+    })
+
+    const [filter, setFilter] = useState({});
+    if (JSON.stringify(filter) === '{}') {
+        tasks.filter.filter = filter;
+    }
 
     const userList = {};
     allUsers.map(item => {userList[item.id] = item.username});
@@ -19,6 +27,40 @@ const Tasks = observer(({filteredTasks, totalCount}) => {
 
     const updateTaskStatus = (id, status) => {
         tasks.updateTaskStatus(id, status)
+    }
+
+    const handleFieldChange = (evt) => {
+        const { name, value } = evt.target;
+        setForm({...form, [name]: value})
+    }
+
+    const handleOnSubmit = (evt) => {
+        evt.preventDefault();
+        const target = evt.target;
+        const checkedUsers = document.querySelectorAll('input[class="checkbox-default user"]:checked');
+        const assignedUsers = Array.from(checkedUsers).map(user => user.value);
+
+        tasks.filter.filter = {
+            "query": target.query.value,
+            "assignedUsers": assignedUsers,
+            "type": [
+                target.task.checked ? target.task.name : null,
+                target.bug.checked ? target.bug.name : null,
+            ].filter(Boolean),
+            "status": [
+                target.opened.checked ? target.opened.name : null,
+                target.inProgress.checked ? target.inProgress.name : null,
+                target.testing.checked ? target.testing.name : null,
+                target.complete.checked ? target.complete.name : null,
+            ].filter(Boolean),
+            "rank": [
+                target.low.checked ? target.low.name : null,
+                target.medium.checked ? target.medium.name : null,
+                target.high.checked ? target.high.name : null,
+            ].filter(Boolean),
+        };
+        setFilter(tasks.filter.filter);
+        tasks.fetch();
     }
 
     return (
@@ -33,71 +75,83 @@ const Tasks = observer(({filteredTasks, totalCount}) => {
         <section className="task__list">
             <div className="task__list-inner">
 
-                <div className="search">
+            <form onSubmit={handleOnSubmit}>
+                <div className="search" id="search">
 
-            <div className="dropdown__inner dropdown__toggle-type">
-              <div className="dropdown__toggle">
-              <div className=" dropdown__label dropdown__label-type  input__default">
-                        <span className = "dropdown__toggle-text">Тип</span>  
-                        <div className="caret-close"></div>
+            <div className="dropdown__outer dropdown__toggle-type">
+              <div>
+              <div className="dropdown__label input__empty capet-down">
+                        <span className = "dropdown__toggle-text ">Тип</span>  
                         </div>
                         <ul className="dropdown__toggle-menu">
                             <li className="dropdown-input">
                                 <label>
-                                    <input type="checkbox" className="checkbox-default"/> Задача
+                                    <input type="checkbox" className="checkbox-default" name="task"/> Задача
                                 </label>
                             </li>
                             <li className="dropdown-input">
                                 <label>
-                                    <input type="checkbox" className="checkbox-default"/> Ошибка
+                                    <input type="checkbox" className="checkbox-default" name="bug"/> Ошибка
                                 </label>
                             </li>
                         </ul>
                         </div>
-                        </div>
+            </div>
 
-
-                     <div className="dropdown__toggle input dropdown__toggle-task input__default">
-                        <input type="text" placeholder="Название задачи"/>
+                   <div className={`dropdown__toggle-task ${!form.query ? 'input__empty' : 'input__default'}`}>
+                        <input 
+                            type="text" 
+                            placeholder="Название задачи" 
+                            name="query"
+                            onChange={handleFieldChange}
+                            value={form.query}
+                        />
                     </div> 
 
-                    <div className="dropdown__inner dropdown__toggle-user">
-                     <div className="dropdown__toggle">
-                     <div className=" dropdown__label dropdown__label-type  input__default">
+                    <div className="dropdown__outer dropdown__toggle-user">
+                     <div>
+                     <div className=" dropdown__label input__empty capet-down">
                          <span className = "dropdown__toggle-text">Пользователь</span> 
-                         <div className="caret-open"></div>
                          </div> 
+                            <ul className="dropdown__toggle-menu">
+                                {allUsers.map(user =>
+                                    <li className="dropdown-input">
+                                        <label>
+                                            <input type="checkbox" className="checkbox-default user" value={user.id}/> {user.username}
+                                        </label>
+                                    </li>
+                                )}
+                            </ul>
                     </div> 
                     </div> 
                    
 
         
-                         <div className="dropdown__inner dropdown__toggle-status">
-              <div className="dropdown__toggle">
-              <div className=" dropdown__label dropdown__label-type  input__default">
+                         <div className="dropdown__outer dropdown__toggle-status">
+              <div>
+              <div className=" dropdown__label input__empty capet-down">
                         <span className = "dropdown__toggle-text">Статус</span> 
-                        <div className="caret-open"></div>
                         </div> 
                             <ul className="dropdown__toggle-menu">
 
                             <li className="dropdown-input">
                                 <label>
-                                    <input type="checkbox" className="checkbox-default"/> Открыто
+                                    <input type="checkbox" className="checkbox-default" name="opened"/> Открыто
                                 </label>
                             </li>
                             <li className="dropdown-input">
                                 <label>
-                                    <input type="checkbox" className="checkbox-default"/> В работе
+                                    <input type="checkbox" className="checkbox-default" name="inProgress"/> В работе
                                 </label>
                             </li>
                             <li className="dropdown-input">
                                 <label>
-                                    <input type="checkbox" className="checkbox-default"/> Тестируется
+                                    <input type="checkbox" className="checkbox-default" name="testing"/> Тестируется
                                 </label>
                             </li>
                             <li className="dropdown-input">
                                 <label>
-                                    <input type="checkbox" className="checkbox-default"/> Сделано
+                                    <input type="checkbox" className="checkbox-default" name="complete"/> Сделано
                                 </label>
                             </li>
                             </ul>
@@ -106,35 +160,36 @@ const Tasks = observer(({filteredTasks, totalCount}) => {
                     </div>  
                     
 
-                    <div className="dropdown__inner dropdown__toggle-priority">
-                     <div className="dropdown__toggle">
-                     <div className=" dropdown__label dropdown__label-type  input__default">
+                    <div className="dropdown__outer dropdown__toggle-priority">
+                     <div>
+                     <div className=" dropdown__label input__empty capet-down">
                         <span className = "dropdown__toggle-text">Приоритет</span> 
-                        <div className="caret-open"></div>
                         </div>  
                         <ul className="dropdown__toggle-menu">
+
                             <li className="dropdown-input">
                                 <label>
-                                    <input type="checkbox" className="checkbox-default"/> Низкий
+                                    <input type="checkbox" className="checkbox-default" name="low"/> Низкий
+                                </label>
+                            </li>
+                            <li className="dropdown-input">
+                                <label >
+                                    <input type="checkbox" className="checkbox-default" name="medium"/> Средний
                                 </label>
                             </li>
                             <li className="dropdown-input">
                                 <label>
-                                    <input type="checkbox" className="checkbox-default"/> Средний
-                                </label>
-                            </li>
-                            <li className="dropdown-input">
-                                <label>
-                                    <input type="checkbox" className="checkbox-default"/> Высокий
+                                    <input type="checkbox" className="checkbox-default" name="high"/> Высокий
                                 </label>
                             </li>
                         </ul>
-           
                     </div> 
+       
                     </div> 
-                     <button className="primary-button task-button">Применить</button> 
+                     <button className="primary-button task-button" type="submit">Применить</button> 
 
                 </div>
+                </form>
 
                 <div className="task__list-window">
 
@@ -147,11 +202,14 @@ const Tasks = observer(({filteredTasks, totalCount}) => {
                                             </div>
                                         </div>
                                         <div className="task__inner">
-                                        
-                                        <Link to={`/task/${task.id}`} className="task__page-text"> {task.title}</Link>
+                                            <Link to={`/task/${task.id}`}>
+                                                <div className="task__page-text">
+                                                    {task.title ? task.title : "---"}
+                                                </div>
+                                            </Link>
                                         </div>
                                         <div className="caption__inner">
-                                            <h3 className="task__list-card">{userList[task.assignedId] ? userList[task.assignedId] : "---"}</h3>
+                                            <h3 to={`/task/${task.id}`} className="task__list-card">{userList[task.assignedId] ? userList[task.assignedId] : "---"}</h3>
                                         </div>
                                         <div className="status__inner">
                                             <button className={`task__page-button status-${task.status}`}>{StatusMap[task.status]}</button></div>

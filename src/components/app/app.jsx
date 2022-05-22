@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch, Redirect, HashRouter } from "react-router-dom";
 import Login from "../../pages/login/login.jsx";
 import UserList from "../../pages/user-list/user-list.jsx";
@@ -10,6 +10,8 @@ import ModalUser from "../../pages/modal-user/modal-user.jsx";
 import ModalTask from "../../pages/modal-task/modal-task.jsx";
 import Error404 from "../../pages/error-404/error-404.jsx";
 import { AppRoute } from '../../const';
+
+const user = localStorage.getItem('user');
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = localStorage.getItem('user');
@@ -29,7 +31,7 @@ const App = () => {
   const user = localStorage.getItem('user');
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Switch>
         <PrivateRoute exact path={AppRoute.USER_LIST} component={UserList} />
         <PrivateRoute exact path={AppRoute.TASK_LIST} component={TaskList} />
@@ -45,7 +47,7 @@ const App = () => {
           <Redirect to={{ pathname: AppRoute.TASK_LIST }} />
         }
       </Switch>
-    </HashRouter>
+    </BrowserRouter>
 )}
 
 export default App;

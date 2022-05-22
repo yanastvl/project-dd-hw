@@ -70,7 +70,7 @@ input,
 textarea {
   border: none;
   outline: none;
-  width: 100%;
+  width: 99%;
   :active,
   :hover,
   :focus {
@@ -122,4 +122,9 @@ input[type="checkbox"] {
 
 .space {
   margin-right: 10px;
+}
+
+fieldset{
+  border:none;
+  padding: 0;
 }

@@ -6,7 +6,6 @@ import { tasks, users, baseFilter } from "../../store/index";
 import { observer } from 'mobx-react-lite';
 
 const TaskList = observer(() => {
-  tasks.filter.filter = {};
   const { filteredTasks, totalCount } = tasks;
 
   return(

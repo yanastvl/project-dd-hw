@@ -87,9 +87,12 @@
 
         min-height: 534px;
 
+        position: relative;
+        
         background-color: #fff;
-        box-shadow: 0px 0px 2px 1px #B5B5B5;
+        box-shadow:inset 0px 0px 2px 1px $inner-shadow;
         border-radius: 5px;
+
     }
 
     &-subtitle {
@@ -114,7 +117,8 @@
     &-text {
         @include text;
         color: $black;
-
+        overflow: hidden;
+        
         &:hover {
             color: $primary;
           }

@@ -46,7 +46,6 @@ const Task = observer(() => {
     })
 
     const handleFieldChange = (evt) => {
-        console.log(evt);
         const { name, value } = evt.target;
         setForm({...form, [name]: value});
     }
@@ -77,8 +76,12 @@ const Task = observer(() => {
         <>
 
     <div className="caption-inner">
+        <div className="caption-title">
         <h3 className="header-caption">{task.title}
         </h3>
+        <div className="header__page-button">
+                                            <button className={`header-button status-${task.status}`}>{StatusMap[task.status]}</button></div>
+                                            </div>
         <div className="caption__button-inner">
         <button className="default-button" onClick={() => updateTaskStatus(task.id, 'inProgress')}>Взять в работу</button>
         <Link to={`/task-edit/${task.id}`} className="primary-button space">Редактировать</Link>
@@ -112,10 +115,6 @@ const Task = observer(() => {
             <p className="task-text">{RankMap[task.rank]}</p>
             </div>
 
-            <div className="task-inner"> 
-            <p className="task-label">Статус</p>
-            <p className="task-text">{StatusMap[task.status]}</p>
-            </div>
 
             <div className="task-inner"> 
             <p className="task-label">Дата создания</p>

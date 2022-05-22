@@ -20,6 +20,8 @@
   &-caption {
     @include caption;
     padding: 30px 0px 20px 80px;
+    max-width: 343px;
+    overflow: hidden;
   }
 
   &-link {
@@ -29,6 +31,7 @@
     height: 60px;
   }
 }
+
 
 .nav__link {
   padding: 13.5px 0px 11.5px;
@@ -98,4 +101,19 @@
 
 .caption__button-inner {
   padding: 30px 80px 20px 0px;
+}
+
+.caption-title {
+  display: flex;
+}
+
+.header__page-button {
+  padding: 30px 80px 20px 10px;
+  height: 20px;
+
+}
+
+.header-button {
+  padding: 2px 10px;
+
 }

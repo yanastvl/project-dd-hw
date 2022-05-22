@@ -3,7 +3,6 @@ import { useLocation, useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import moment from "moment";
 import { useHistory } from "react-router-dom";
-import { Dropdown } from '../dropdown/dropdown.jsx';
 import { closeDropdown, toggleDropdown } from '../utils/utils.jsx';
 import { users, tasks } from "../../store/index";
 import { observer } from 'mobx-react-lite';
@@ -27,9 +26,6 @@ const TaskForm = observer(() => {
         title:  id ? task.title : '',
         type: id ? task.type : 'task',
     })
-
-    const descriptionIsEmpty = !form.description ? true : false;
-    const titleIsEmpty = !form.title ? true : false;
 
     if (!form.id && id){
         tasks.getTask(id).then(() => setForm({...tasks.task}) )
@@ -131,7 +127,7 @@ const TaskForm = observer(() => {
 
             <div className="dropdown__input">
                     <input 
-                    className={`dropdown__input-input ${titleIsEmpty ? 'input__empty' : 'input__default'}`}
+                    className={`dropdown__input-input ${!form.title ? 'input__empty' : 'input__default'}`}
                     type="text" 
                     onChange={handleFieldChange} 
                     placeholder="Название задачи"
@@ -146,7 +142,7 @@ const TaskForm = observer(() => {
                     <p className="task-label">Описание</p>
                     <textarea 
                     onChange={handleFieldChange} 
-                    className={`edit__textarea ${descriptionIsEmpty ? 'input__empty' : 'input__default'}`} 
+                    className={`edit__textarea ${!form.description ? 'input__empty' : 'input__default'}`} 
                     name="description"
                     value={form.description}
                     required

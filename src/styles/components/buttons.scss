@@ -316,6 +316,7 @@
     stroke: $white;
     border-radius: 5px;
   }
+
 }
 
 /*Checkbox*/
@@ -331,12 +332,13 @@
     border-radius: 5px;
   }
 
-  &:active {
+  &:checked {
     background-color: $primary;
     border: 1px solid $primary;
     border-radius: 5px;
-    background: no-repeat center url(../img/x.svg);
-    background-size: 10px;
+    background: center url(../img/x.svg);
+    background-blend-mode: color-dodge;
+    background-size: cover;
   }
 }
 
@@ -361,6 +363,10 @@
   background-color: $white;
   box-shadow: inset 0px 0px 2px 1px $inner-shadow;
   border-radius: 3px;
+
+  &:hover {
+    border: 1px solid $primary;
+  }
 }
 
 .input__default {
@@ -374,7 +380,6 @@
     border: 1px solid $primary;
     box-shadow: inset 0px 0px 2px 1px $inner-shadow;
     border-radius: 3px;
-
   }
 
   &:focus {

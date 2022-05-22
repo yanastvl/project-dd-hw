@@ -11,6 +11,8 @@ const request = async (url, method = 'GET', body) => {
     return response.json();
 }
 
+/*Users*/
+
 export const login = (data) => {
     return request(`${url}/users/login`, 'POST', data);
 }
@@ -26,6 +28,8 @@ export const editUser = (data) => {
 export const getUsers = (data) => {
     return request(`${url}/users`, 'POST', data);
 }
+
+/*Tasks*/
 
 export const getTasks = (data) => {
     return request(`${url}/tasks`, 'POST', data);
@@ -47,6 +51,12 @@ export const deleteTask = (id) => {
     return request(`${url}/tasks/${id}`, 'DELETE');
 }
 
+export const patchTask = (id, data) => {
+    return request(`${url}/tasks/${id}/worktime`, 'PATCH', data)
+}
+
+/*Comments*/
+
 export const addComment = (data) => {
     return request(`${url}/comments/createOrEdit`, 'PUT', data);
 }
@@ -55,13 +65,10 @@ export const getComments = (id) => {
     return request(`${url}/comments/${id}`);
 }
 
-export const patchTask = (id, data) => {
-    return request(`${url}/tasks/${id}/worktime`, 'PATCH', data)
-}
-
 export const deleteComment = (id) => {
     return request(`${url}/comments/${id}`, 'DELETE');
 }
+
 // export const getEvents = () => {
 //     return request(`${url}`);
 // }
