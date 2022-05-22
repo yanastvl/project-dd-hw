@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { tasks } from "../../store/index";
 import { users } from "../../store/index";
@@ -7,7 +7,8 @@ import { observer } from 'mobx-react-lite';
 import { StatusMap, RankMap } from '../utils/utils.jsx';
 import Pagination from "../../components/pagination/pagination.jsx";
 
-const Tasks = observer(({filteredTasks, totalCount}) => {
+const Tasks = observer(() => {
+    const { filteredTasks, totalCount } = tasks;
     const { allUsers } = users;
     const [form, setForm] = useState({
         query: ""

@@ -6,16 +6,13 @@ import { observer } from 'mobx-react-lite';
 
 const AuthWindow = observer(() => {
     const history = useHistory();
-    const [errorMessage, setErrorMessage] = useState(null);
+    const [errorMessage, setErrorMessage] = useState();
     const [error, raiseError] = useState(false);
 
     const [form, setForm] = useState({
         login: "username",
         password: "password"
     })
-
-    const loginIsEmpty = !form.login ? true : false;
-    const passIsEmpty = !form.password ? true : false;
 
     const handleFieldChange = (evt) => {
         const { name, value } = evt.target;
@@ -48,7 +45,7 @@ const AuthWindow = observer(() => {
                         <label htmlFor="login" className="authorization__input-text">Логин</label>
                         <input 
                             type="text" 
-                            className={`authorization__input-input ${loginIsEmpty ? 'input__empty' : 'input__default'} ${error && 'input__error'}`} 
+                            className={`authorization__input-input ${!form.login ? 'input__empty' : 'input__default'} ${error && 'input__error'}`} 
                             name="login" 
                             required
                             value={form.login} 
@@ -59,7 +56,7 @@ const AuthWindow = observer(() => {
                         <label htmlFor="login" className="authorization__input-text">Пароль</label>
                         <input 
                             type="password" 
-                            className={`authorization__input-input ${passIsEmpty ? 'input__empty' : 'input__default'} ${error && 'input__error'}`} 
+                            className={`authorization__input-input ${!form.password ? 'input__empty' : 'input__default'} ${error && 'input__error'}`} 
                             name="password" 
                             required
                             value={form.password} 

@@ -8,10 +8,8 @@ import EditTask from "../../pages/edit-task/edit-task.jsx";
 import UserPage from "../../pages/user-page/user-page.jsx";
 import ModalUser from "../../pages/modal-user/modal-user.jsx";
 import ModalTask from "../../pages/modal-task/modal-task.jsx";
-import Error404 from "../../pages/error-404/error-404.jsx";
 import { AppRoute } from '../../const';
 
-const user = localStorage.getItem('user');
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = localStorage.getItem('user');
